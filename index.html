@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ley Line Finder</title>
+  <meta name="description" content="Find ley lines between sacred and ancient sites, on a map or a 3D globe. Works offline.">
+  <meta name="theme-color" content="#1e2a2a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Ley Lines">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.8.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="map" aria-label="Map of sacred sites and ley lines"></div>
+
+  <header class="topbar">
+    <div class="brand" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="26" height="26"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 23 L27 9" stroke="var(--ley)" stroke-width="2.2" stroke-linecap="round"/><circle cx="9" cy="20.5" r="2.4" fill="currentColor"/><circle cx="16" cy="16" r="2.4" fill="currentColor"/><circle cx="23" cy="11.5" r="2.4" fill="currentColor"/></svg>
+    </div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search sites, lines or places" autocomplete="off" aria-label="Search">
+      <div id="results" class="results" hidden></div>
+    </div>
+  </header>
+
+  <div class="fabs">
+    <button id="btnGlobe" class="fab" aria-label="Show the globe" title="Globe or flat map">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg>
+    </button>
+    <button id="btnLocate" class="fab" aria-label="Show where I am" title="Where am I">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+    </button>
+  </div>
+
+  <div id="discoverBar" class="discover-bar" hidden></div>
+
+  <section id="sheet" class="sheet" data-size="peek">
+    <button class="grabber" id="grabber" aria-label="Expand or collapse the panel"><span></span></button>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="lines" aria-selected="true">Ley lines</button>
+      <button role="tab" data-tab="sites">Sites</button>
+      <button role="tab" data-tab="discover">Discover</button>
+      <button role="tab" data-tab="data">Offline &amp; settings</button>
+    </nav>
+    <div class="panel" id="panel"></div>
+  </section>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script src="https://unpkg.com/maplibre-gl@5.8.0/dist/maplibre-gl.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
